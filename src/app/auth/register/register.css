@@ -1,0 +1,21 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f5f5f5;
+}
+
+.register-card {
+  width: 380px;
+  padding: 1.5rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.text-small {
+  text-align: center;
+  margin-top: 1rem;
+}

@@ -1,0 +1,18 @@
+<mat-toolbar color="primary" class="navbar">
+  <span class="brand" routerLink="/">EncuestasApp</span>
+
+  <span class="spacer"></span>
+
+  <!-- Si está logueado -->
+  <ng-container *ngIf="isLoggedIn$ | async; else notLoggedIn">
+    <button mat-button routerLink="/surveys">Encuestas</button>
+    <button mat-button routerLink="/responses">Respuestas</button>
+    <button mat-button (click)="logout()">Cerrar sesión</button>
+  </ng-container>
+
+  <!-- Si NO está logueado -->
+  <ng-template #notLoggedIn>
+    <button mat-button routerLink="/login">Iniciar sesión</button>
+    <button mat-button routerLink="/register">Registrarse</button>
+  </ng-template>
+</mat-toolbar>

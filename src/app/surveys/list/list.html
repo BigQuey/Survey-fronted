@@ -1,0 +1,25 @@
+<div class="container mt-4" *ngIf="!loading">
+  <h2 class="mb-4">Encuestas disponibles</h2>
+
+  <div *ngIf="surveys.length > 0; else noSurveys">
+    <div
+      *ngFor="let survey of surveys"
+      class="card mb-3 shadow-sm"
+      style="cursor: pointer;"
+      (click)="goToDetail(survey.id)"
+    >
+      <div class="card-body">
+        <h5 class="card-title">{{ survey.title }}</h5>
+        <p class="card-text">{{ survey.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noSurveys>
+    <div class="alert alert-info">No hay encuestas disponibles.</div>
+  </ng-template>
+</div>
+
+<div *ngIf="loading" class="text-center mt-5">
+  <p>Cargando encuestas...</p>
+</div>

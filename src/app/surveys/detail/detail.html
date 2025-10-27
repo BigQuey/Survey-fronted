@@ -1,0 +1,39 @@
+<div class="container mt-4" *ngIf="!loading">
+  <h2>{{ survey?.title }}</h2>
+  <p>{{ survey?.description }}</p>
+
+  <form (ngSubmit)="submitResponses()" *ngIf="!submitted">
+    <div *ngFor="let q of survey?.questions" class="mb-3">
+      <label class="form-label fw-bold">{{ q.text }}</label>
+
+      <input
+        *ngIf="q.type === 'text'"
+        type="text"
+        class="form-control"
+        [(ngModel)]="answers[q.id]"
+        name="q{{ q.id }}"
+        required
+      />
+
+      <select
+        *ngIf="q.type === 'select'"
+        class="form-select"
+        [(ngModel)]="answers[q.id]"
+        name="q{{ q.id }}"
+        required
+      >
+        <option *ngFor="let opt of q.options" [value]="opt">{{ opt }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Enviar respuestas</button>
+  </form>
+
+  <div *ngIf="submitted" class="alert alert-success mt-4">
+    ¡Gracias por completar la encuesta! Redirigiendo...
+  </div>
+</div>
+
+<div *ngIf="loading" class="text-center mt-5">
+  <p>Cargando encuesta...</p>
+</div>
