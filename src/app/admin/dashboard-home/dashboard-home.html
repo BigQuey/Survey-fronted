@@ -1,0 +1,51 @@
+<div *ngIf="isLoading" class="loading-shade">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading">
+  <h1>Resumen General</h1>
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <div mat-card-avatar class="card-icon poll">
+            <mat-icon>poll</mat-icon>
+          </div>
+          <mat-card-title>Encuestas Totales</mat-card-title>
+          <mat-card-subtitle>Número de encuestas creadas</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="stats-number">{{ stats.totalSurveys }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <div mat-card-avatar class="card-icon users">
+            <mat-icon>group</mat-icon>
+          </div>
+          <mat-card-title>Usuarios Registrados</mat-card-title>
+          <mat-card-subtitle>Total de usuarios en el sistema</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="stats-number">{{ stats.totalUsers }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <div mat-card-avatar class="card-icon responses">
+            <mat-icon>question_answer</mat-icon>
+          </div>
+          <mat-card-title>Respuestas Enviadas</mat-card-title>
+          <mat-card-subtitle>Total de respuestas recibidas</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="stats-number">{{ stats.totalResponses }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

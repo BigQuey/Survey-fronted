@@ -20,6 +20,18 @@ export class SurveyService {
   getAllSurveys(): Observable<any> {
     return this.http.get(`${this.apiUrl}/list`);
   }
+  createSurvey(surveyData: { title: string; description: string }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/create`, surveyData);
+  }
 
+  // Actualiza una encuesta existente
+  updateSurvey(id: number, surveyData: { title: string; description: string }): Observable<any> {
+    return this.http.put(`${this.apiUrl}/update/${id}`, surveyData);
+  }
+
+  // Elimina una encuesta
+  deleteSurvey(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
   
 }

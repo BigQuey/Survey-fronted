@@ -1,0 +1,15 @@
+.admin-container {
+  height: 100vh;
+}
+
+.admin-sidenav {
+  width: 250px;
+}
+
+.admin-content {
+  background-color: #f4f7fa;
+}
+
+.active-link {
+  background-color: rgba(0, 0, 0, 0.1);
+}

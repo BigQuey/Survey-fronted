@@ -7,9 +7,16 @@
         <li *ngIf="existingQuestions.length === 0" class="list-group-item">
           Aún no hay preguntas en esta encuesta.
         </li>
-        <li *ngFor="let q of existingQuestions" class="list-group-item d-flex justify-content-between align-items-center">
-          <span>{{ q.text }} <small class="text-muted">({{ q.type }})</small></span>
-          <button class="btn btn-sm btn-outline-danger">Eliminar</button>
+        <li
+          *ngFor="let q of existingQuestions"
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <span
+            >{{ q.text }} <small class="text-muted">({{ q.type }})</small></span
+          >
+          <button class="btn btn-sm btn-outline-danger" (click)="deleteQuestion(q.id)">
+            Eliminar
+          </button>
         </li>
       </ul>
     </div>
@@ -19,22 +26,36 @@
       <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
           <label for="text" class="form-label">Texto de la pregunta</label>
-          <input type="text" id="text" class="form-control" formControlName="text" required>
+          <input type="text" id="text" class="form-control" formControlName="text" required />
         </div>
 
         <div class="mb-3">
           <label for="type" class="form-label">Tipo de pregunta</label>
           <select id="type" class="form-select" formControlName="type">
-            <option *ngFor="let type of questionTypes" [value]="type">{{ type | titlecase }}</option>
+            <option *ngFor="let type of questionTypes" [value]="type">
+              {{ type | titlecase }}
+            </option>
           </select>
         </div>
 
-        <div *ngIf="questionForm.get('type')?.value === 'select' || questionForm.get('type')?.value === 'radio'">
+        <div
+          *ngIf="
+            questionForm.get('type')?.value === 'select' ||
+            questionForm.get('type')?.value === 'radio'
+          "
+        >
           <h5 class="mt-4">Opciones de Respuesta</h5>
           <div formArrayName="options">
             <div *ngFor="let option of options.controls; let i = index" class="input-group mb-2">
-              <input type="text" [formControlName]="i" class="form-control" placeholder="Texto de la opción {{ i + 1 }}">
-              <button type="button" class="btn btn-outline-danger" (click)="removeOption(i)">-</button>
+              <input
+                type="text"
+                [formControlName]="i"
+                class="form-control"
+                placeholder="Texto de la opción {{ i + 1 }}"
+              />
+              <button type="button" class="btn btn-outline-danger" (click)="removeOption(i)">
+                -
+              </button>
             </div>
           </div>
           <button type="button" class="btn btn-sm btn-outline-primary mt-2" (click)="addOption()">

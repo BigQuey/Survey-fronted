@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -13,9 +14,10 @@ import { AuthService } from '../../core/services/auth';
 })
 export class Navbar {
   isLoggedIn$;
-
+  userRole$: Observable<string | null>;
   constructor(private auth: AuthService, private router: Router) {
     this.isLoggedIn$ = auth.isLoggedIn$;
+    this.userRole$ = auth.userRole$;
   }
 
   logout() {

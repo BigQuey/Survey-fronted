@@ -114,4 +114,23 @@ surveyId!: number;
       }
     });
   }
+
+deleteQuestion(questionId: number): void {
+    // Usamos confirm() para una buena experiencia de usuario, evitando eliminaciones accidentales
+    if (confirm('¿Estás seguro de que quieres eliminar esta pregunta?')) {
+      this.questionService.deleteQuestion(questionId).subscribe({
+        next: () => {
+          // Si la petición es exitosa, actualizamos la lista localmente
+          // Esto es más eficiente que volver a llamar al servidor
+          this.existingQuestions = this.existingQuestions.filter(q => q.id !== questionId);
+          alert('¡Pregunta eliminada con éxito!');
+        },
+        error: (err) => {
+          console.error("Error al eliminar la pregunta", err);
+          alert('Hubo un error al intentar eliminar la pregunta.');
+        }
+      });
+    }
+  }
+
 }

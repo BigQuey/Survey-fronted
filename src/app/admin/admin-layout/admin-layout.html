@@ -1,0 +1,27 @@
+<mat-sidenav-container class="admin-container">
+  <mat-sidenav mode="side" opened class="admin-sidenav">
+    <mat-toolbar>
+      <mat-icon>admin_panel_settings</mat-icon>
+      <span class="ms-2">Panel Admin</span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/admin/home" routerLinkActive="active-link">
+        <mat-icon>dashboard</mat-icon>
+        <span class="ms-2">Dashboard</span>
+      </a>
+      <a mat-list-item routerLink="/admin/surveys" routerLinkActive="active-link">
+        <mat-icon>poll</mat-icon>
+        <span class="ms-2">Gestionar Encuestas</span>
+      </a>
+      </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="admin-content">
+    <mat-toolbar color="primary">
+      <span>Bienvenido, Administrador</span>
+    </mat-toolbar>
+    <main class="p-4">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>

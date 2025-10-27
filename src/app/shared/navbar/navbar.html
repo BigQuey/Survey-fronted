@@ -1,16 +1,26 @@
 <mat-toolbar color="primary" class="navbar">
   <span class="brand" routerLink="/">EncuestasApp</span>
-
   <span class="spacer"></span>
 
-  <!-- Si está logueado -->
   <ng-container *ngIf="isLoggedIn$ | async; else notLoggedIn">
-    <button mat-button routerLink="/surveys">Encuestas</button>
-    <button mat-button routerLink="/responses">Respuestas</button>
+    
+    <ng-container *ngIf="userRole$ | async as role">
+
+      <div *ngIf="role === 'ADMIN'">
+        <button mat-button routerLink="/admin/home">Dashboard</button>
+        <button mat-button routerLink="/admin/surveys">Gestionar Encuestas</button>
+      </div>
+
+      <div *ngIf="role === 'USER'">
+        <button mat-button routerLink="/surveys/list">Ver Encuestas</button>
+        </div>
+
+    </ng-container>
+    
     <button mat-button (click)="logout()">Cerrar sesión</button>
+
   </ng-container>
 
-  <!-- Si NO está logueado -->
   <ng-template #notLoggedIn>
     <button mat-button routerLink="/login">Iniciar sesión</button>
     <button mat-button routerLink="/register">Registrarse</button>
