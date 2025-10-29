@@ -13,4 +13,7 @@ export class ResponseService {
   submitResponses(payload: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/submit`, payload);
   }
+  getSurveyStats(surveyId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/stats/survey/${surveyId}`);
+  }
 }

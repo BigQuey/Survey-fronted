@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth';
 import { Observable } from 'rxjs';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-navbar',

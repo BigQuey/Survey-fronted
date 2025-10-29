@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <h1>Dashboard de Resultados</h1>
+  <p class="text-muted">Selecciona una encuesta para analizar las respuestas recibidas.</p>
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Seleccionar Encuesta</mat-label>
+    <mat-select (selectionChange)="onSurveySelect($event.value)">
+      <mat-option *ngFor="let survey of surveys" [value]="survey.id">
+        {{ survey.title }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="isLoadingStats" class="loading-shade">
+    <mat-spinner></mat-spinner>
+    <p>Cargando estadísticas...</p>
+  </div>
+
+  <div *ngIf="stats && !isLoadingStats" class="mt-4">
+    <h2>Resultados para: {{ stats.surveyTitle }}</h2>
+    <div class="row">
+      <div *ngFor="let question of stats.questions" class="col-md-6 mb-4">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ question.questionText }}</mat-card-title>
+            <mat-card-subtitle>Tipo: {{ question.questionType | titlecase }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div *ngIf="question.chartData" class="chart-container">
+              <canvas baseChart
+                [data]="question.chartData"
+                [type]="question.chartType">
+              </canvas>
+            </div>
+            <ul *ngIf="question.questionType === 'text'">
+              <li *ngFor="let answer of question.textResponses">{{ answer }}</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

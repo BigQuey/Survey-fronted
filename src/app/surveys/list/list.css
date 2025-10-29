@@ -1,0 +1,62 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+
+.card {
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  border: none;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+
+.card-body {
+  padding: 1.5rem;
+  background: #ffffff;
+  transition: background 0.3s ease;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2575fc;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+
+.alert {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #e0f0ff;
+  color: #2575fc;
+  font-weight: 500;
+}
+
+
+.text-center p {
+  font-size: 1.1rem;
+  color: #555;
+}

@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth';
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ import { AuthService } from '../../core/services/auth';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-  ],
+    MatIcon
+],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -25,7 +27,7 @@ import { AuthService } from '../../core/services/auth';
 export class LoginComponent {
   loading = false;
   form: any;
-
+  hide = true;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -39,13 +41,31 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    if (this.form.invalid) return;
+  if (this.form.invalid) return;
 
-    this.loading = true;
-    this.authService.login(this.form.value).subscribe({
-      next: () => this.router.navigate(['/surveys/list']),
-      error: () => alert('Credenciales inválidas')
+  this.loading = true;
+  
+  this.authService.login(this.form.value).subscribe({
+    next: (data) => {
+      this.loading = false;
+      const role = data.role;
 
-    });
+      if (role === 'ADMIN') {
+        this.router.navigate(['/admin/home']);
+      } else if (role === 'USUARIO') {
+        this.router.navigate(['/surveys/list']);
+      } else {
+        console.error(role);
+        console.error('Rol desconocido');
+        this.router.navigate(['/']);
+      }
+    },
+    error: (err) => {
+      this.loading = false;
+      console.error(err);
+      alert('Credenciales inválidas');
+    },
+  });
+
   }
 }

@@ -1,0 +1,102 @@
+.mat-dialog-container {
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  font-family: 'Roboto', sans-serif;
+  max-width: 500px;
+}
+
+
+h2[mat-dialog-title] {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #1e293b;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+
+h2[mat-dialog-title]::after {
+  content: '📝';
+  position: absolute;
+  right: -30px;
+  top: 0;
+  font-size: 1.6rem;
+  opacity: 0.5;
+}
+
+
+.mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+
+mat-form-field {
+  width: 100%;
+}
+
+input.mat-input-element,
+textarea.mat-input-element {
+  padding: 0.6rem 0.5rem;
+  border-radius: 10px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+input.mat-input-element:focus,
+textarea.mat-input-element:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+
+mat-dialog-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+
+button[mat-button] {
+  color: #475569;
+  font-weight: 500;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+button[mat-button]:hover {
+  background: rgba(71, 85, 105, 0.1);
+  transform: scale(1.05);
+  border-radius: 10px;
+}
+
+
+button[mat-raised-button] {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+button[mat-raised-button]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+
+mat-label {
+  color: #475569;
+  font-weight: 500;
+}
+
+.mat-error {
+  font-size: 0.85rem;
+  color: #ef4444;
+  margin-top: 0.25rem;
+}

@@ -1,15 +1,95 @@
 .admin-container {
   height: 100vh;
+  font-family: 'Roboto', sans-serif;
 }
 
 .admin-sidenav {
-  width: 250px;
+  width: 260px;
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
 }
 
-.admin-content {
-  background-color: #f4f7fa;
+.sidenav-header {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem 1rem 1rem;
+  gap: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sidenav-header mat-icon {
+  color: #4f46e5;
+  font-size: 30px;
+}
+
+.sidenav-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #111827;
+  font-weight: 600;
+}
+
+mat-nav-list a {
+  color: #374151;
+  border-radius: 8px;
+  margin: 5px 10px;
+  transition: all 0.3s ease;
+}
+
+mat-nav-list a:hover {
+  background: #f3f4f6;
+  transform: translateX(5px);
 }
 
 .active-link {
-  background-color: rgba(0, 0, 0, 0.1);
+  background: #e0e7ff !important;
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+mat-nav-list mat-icon {
+  margin-right: 12px;
+  color: #4f46e5;
+}
+
+.admin-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 0 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  color: #111827;
+  font-weight: 500;
+}
+
+.spacer {
+  flex: 1;
+}
+
+button[mat-icon-button] mat-icon {
+  color: #4f46e5;
+  transition: transform 0.2s ease;
+}
+
+button[mat-icon-button]:hover mat-icon {
+  transform: scale(1.1);
+}
+
+.admin-content {
+  background: #f9fafb;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  margin: 1rem;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }

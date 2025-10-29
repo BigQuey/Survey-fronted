@@ -8,6 +8,8 @@ import { QuestionFormComponent } from './admin/question-form/question-form';
 import { SurveyManagementComponent } from './admin/survey-management/survey-management';
 import { DashboardHomeComponent } from './admin/dashboard-home/dashboard-home';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout';
+import { UserManagementComponent } from './admin/user-management/user-management';
+import { ResultsDashboardComponent } from './admin/results-dashboard/results-dashboard';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,6 +31,8 @@ export const routes: Routes = [
     children: [
       { path: 'home', component: DashboardHomeComponent },
       { path: 'surveys', component: SurveyManagementComponent },
+      { path: 'users', component: UserManagementComponent },
+      { path: 'results', component: ResultsDashboardComponent },
       { path: 'survey/:id/questions', component: QuestionFormComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
     ]

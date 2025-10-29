@@ -27,6 +27,8 @@ export class DashboardHomeComponent implements OnInit {
       next: (data) => {
         this.stats = data;
         this.isLoading = false;
+        console.log(data);
+        
       },
       error: (err) => {
         console.error('Error fetching stats', err);
