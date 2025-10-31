@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
   }
 
   loadSurveys(): void {
-    this.surveyService.getAllSurveys().subscribe({
+    this.surveyService.getMySurveyList().subscribe({
       next: (res) => {
         this.surveys = res.data || [];
         this.loading = false;
@@ -32,7 +32,16 @@ export class ListComponent implements OnInit {
     });
   }
 
-  goToDetail(id: number): void {
-    this.router.navigate(['/surveys/detail', id]);
+   goToDetail(id: number): void {
+     this.router.navigate(['/surveys/detail', id]);
+   }
+  goToSurvey(survey: any): void {
+    if (survey.completedByUser) {
+      // Si está completada, navega al detalle en modo "ver"
+      this.router.navigate(['/surveys/detail', survey.id], { queryParams: { mode: 'view' } });
+    } else {
+      // Si no, navega al detalle en modo "responder" (normal)
+      this.router.navigate(['/surveys/detail', survey.id]);
+    }
   }
 }

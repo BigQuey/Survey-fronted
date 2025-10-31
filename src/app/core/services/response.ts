@@ -16,4 +16,9 @@ export class ResponseService {
   getSurveyStats(surveyId: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/stats/survey/${surveyId}`);
   }
+  getMyAnswers(surveyId: number): Observable<any> {
+  return this.http.get(`${this.apiUrl}/by-user-and-survey`, { 
+    params: { surveyId: surveyId.toString() } 
+  });
+}
 }

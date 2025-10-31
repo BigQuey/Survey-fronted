@@ -50,9 +50,9 @@ export class LoginComponent {
       this.loading = false;
       const role = data.role;
 
-      if (role === 'ADMIN') {
+      if (role === 'ROLE_ADMIN') {
         this.router.navigate(['/admin/home']);
-      } else if (role === 'USUARIO') {
+      } else if (role === 'ROLE_USUARIO') {
         this.router.navigate(['/surveys/list']);
       } else {
         console.error(role);

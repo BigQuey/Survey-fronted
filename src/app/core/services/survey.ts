@@ -17,9 +17,10 @@ export class SurveyService {
   getSurveyDetails(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}/details`);
   }
-  getAllSurveys(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/list`);
-  }
+  getMySurveyList(): Observable<any> {
+  // Asume que el token se añade con un HttpInterceptor
+  return this.http.get(`${this.apiUrl}/my-list`); 
+}
   createSurvey(surveyData: { title: string; description: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/create`, surveyData);
   }

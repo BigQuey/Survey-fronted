@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule, MatButtonModule, MatDialogModule, MatSelectModule
   ],
   templateUrl: './user-dialog.html',
-  styles: './user-dialog.css'
+  styleUrl: './user-dialog.css'
 })
 export class UserDialogComponent {
   userForm: FormGroup;
@@ -36,7 +36,7 @@ export class UserDialogComponent {
       email: [data?.email || '', [Validators.required, Validators.email]],
       // La contraseña solo es requerida al crear un nuevo usuario
       password: ['', this.isEditMode ? null : Validators.required],
-      role: [data?.role || 'USER', Validators.required]
+      role: [data?.role || 'ROLE_USER', Validators.required]
     });
   }
 
