@@ -10,24 +10,36 @@ import { DashboardHomeComponent } from './admin/dashboard-home/dashboard-home';
 import { AdminLayoutComponent } from './admin/admin-layout/admin-layout';
 import { UserManagementComponent } from './admin/user-management/user-management';
 import { ResultsDashboardComponent } from './admin/results-dashboard/results-dashboard';
+import { loginGuard } from './guards/login-guard';
+import { authGuard } from './guards/auth-guard';
+import { adminGuard } from './guards/admin-guard';
+import { NotFoundComponent } from './shared/not-found/not-found';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [loginGuard]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [loginGuard]
+  },
   {
     path: 'surveys/list',
     component: ListComponent,
-    // canActivate: [AuthGuard] // Protege para que solo usuarios logueados vean la lista
+    canActivate: [authGuard]
   },
   {
     path: 'surveys/detail/:id',
     component: SurveyDetailComponent,
-    // canActivate: [AuthGuard] // Protege para que solo usuarios logueados respondan
+    canActivate: [authGuard]
   },
   {
     path: 'admin',
-    component: AdminLayoutComponent, // 1. Este componente "padre" siempre se carga para /admin/*
-    // canActivate: [AdminGuard],    // 2. Un solo Guard protege TODAS las rutas hijas
+    component: AdminLayoutComponent,
+    canActivate: [adminGuard],
     children: [
       { path: 'home', component: DashboardHomeComponent },
       { path: 'surveys', component: SurveyManagementComponent },
@@ -38,5 +50,6 @@ export const routes: Routes = [
     ]
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: 'login' }
+
+  { path: '**', component: NotFoundComponent } 
 ];

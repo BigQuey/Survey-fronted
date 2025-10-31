@@ -37,22 +37,13 @@ export class SurveyDetailComponent {
 
   loadSurvey(): void {
     this.loading = true;
-    // this.surveyService.getSurveyDetails(this.surveyId).subscribe({
-    //   next: (res) => {
-    //     this.survey = res.data;
-    //     this.loading = false;
-    //   },
-    //   error: (err) => {
-    //     console.error('Error al cargar encuesta:', err);
-    //     this.loading = false;
-    //   }
-    // });
+
     const surveyDetails$ = this.surveyService.getSurveyDetails(this.surveyId);
 
     if (this.viewMode) {
-      // MODO VISTA: Carga la encuesta Y las respuestas del usuario
-      const myAnswers$ = this.responseService.getMyAnswers(this.surveyId);
       
+      const myAnswers$ = this.responseService.getMyAnswers(this.surveyId);
+
       forkJoin({ survey: surveyDetails$, answers: myAnswers$ }).subscribe({
         next: ({ survey, answers }) => {
           this.survey = survey.data;
@@ -62,11 +53,10 @@ export class SurveyDetailComponent {
         error: (err) => {
           console.error('Error al cargar datos de vista:', err);
           this.loading = false;
-        }
+        },
       });
-
     } else {
-      // MODO FORMULARIO: Carga solo la encuesta para responder
+      
       surveyDetails$.subscribe({
         next: (res) => {
           this.survey = res.data;
@@ -75,7 +65,7 @@ export class SurveyDetailComponent {
         error: (err) => {
           console.error('Error al cargar encuesta:', err);
           this.loading = false;
-        }
+        },
       });
     }
   }
@@ -87,16 +77,16 @@ export class SurveyDetailComponent {
     return answerMap;
   }
   submitResponses(): void {
-    // Asegúrate de obtener el email del usuario como vimos anteriormente
+    
     const userEmail = this.authService.getUserEmail();
 
     const payload = {
       surveyId: this.surveyId,
-      userEmail: userEmail, // No olvides incluir el email
+      userEmail: userEmail,
       answers: Object.entries(this.answers).map(([questionId, response]) => ({
-        // <-- CORRECCIÓN
+        
         questionId: Number(questionId),
-        response: response, // Asegúrate que esta propiedad también coincida con tu AnswerDTO en Java
+        response: response,
       })),
     };
 
