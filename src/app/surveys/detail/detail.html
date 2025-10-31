@@ -41,13 +41,16 @@
                 required
               >
                 <option [ngValue]="undefined" disabled>-- Selecciona una opción --</option>
-                <option *ngFor="let opt of q.options" [value]="opt">{{ opt }}</option>
+                <!-- <option *ngFor="let opt of q.options" [value]="opt">{{ opt }}</option> -->
+                  <option *ngFor="let option of ['Muy satisfecho', 'Satisfecho', 'Insatisfecho']" [value]="option">
+                    {{ option }}
+                </option>
               </select>
             </div>
 
             <!-- Pregunta tipo radio -->
             <div *ngIf="q.type === 'radio'" class="radio-group mt-2">
-              <div *ngFor="let opt of q.options" class="form-check">
+              <div *ngFor="let opt of ['Sí', 'No']" class="form-check">
                 <input
                   class="form-check-input"
                   type="radio"
@@ -59,6 +62,7 @@
                 />
                 <label class="form-check-label" [for]="'q' + q.id + '-' + opt">{{ opt }}</label>
               </div>
+              
             </div>
           </div>
 

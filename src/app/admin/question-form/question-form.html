@@ -54,7 +54,7 @@
         </select>
       </div>
 
-      <div
+      <!-- <div
         *ngIf="questionForm.get('type')?.value === 'select' || questionForm.get('type')?.value === 'radio'"
         class="options-container"
       >
@@ -79,8 +79,20 @@
         <button type="button" class="add-option" (click)="addOption()">
           + Añadir opción
         </button>
+      </div> -->
+      <div *ngIf="questionForm.get('type')?.value === 'radio'" class="options-container">
+        <h5>Opciones de respuesta</h5>
+        <div class="option-row" *ngFor="let opt of ['Sí', 'No']; let i = index">
+          <input type="text" [value]="opt" readonly />
+        </div>
       </div>
 
+      <div *ngIf="questionForm.get('type')?.value === 'select'" class="options-container">
+        <h5>Opciones de respuesta</h5>
+        <div class="option-row" *ngFor="let opt of ['Muy satisfecho', 'Satisfecho', 'Insatisfecho']; let i = index">
+          <input type="text" [value]="opt" readonly />
+        </div>
+      </div>
       <button
         type="submit"
         class="save-btn"

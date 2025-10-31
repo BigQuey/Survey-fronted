@@ -9,6 +9,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BaseChartDirective } from 'ng2-charts';
+import { Chart, registerables } from 'chart.js'; 
+
+Chart.register(...registerables);
 @Component({
   selector: 'app-results-dashboard',
   imports: [CommonModule, MatFormFieldModule, MatSelectModule,
@@ -29,7 +32,7 @@ export class ResultsDashboardComponent {
   ) {}
 
   ngOnInit(): void {
-    // Carga las encuestas para el selector al iniciar
+    
     this.surveyService.getSurveys().subscribe({
       next: (res) => {
         this.surveys = res.data;
@@ -43,15 +46,15 @@ export class ResultsDashboardComponent {
     if (!surveyId) return;
     this.selectedSurveyId = surveyId;
     this.isLoadingStats = true;
-    this.stats = null; // Limpia las estadísticas anteriores
+    this.stats = null;
 
     this.responseService.getSurveyStats(surveyId).subscribe({
       next: (res) => {
-        // Procesamos los datos para que sean compatibles con Chart.js
+        
         const processedStats = res.data;
         processedStats.questions.forEach((question: any) => {
           if (question.questionType === 'select' || question.questionType === 'radio') {
-            // Transformamos el mapa de 'answerCounts' a un formato que ng2-charts entiende
+        
             question.chartData = {
               labels: Object.keys(question.answerCounts),
               datasets: [{
@@ -60,7 +63,7 @@ export class ResultsDashboardComponent {
                 backgroundColor: ['#3f51b5', '#ff4081', '#4caf50', '#ffc107', '#9c27b0', '#00bcd4'],
               }]
             };
-            question.chartType = 'pie'; // Puedes usar 'bar', 'doughnut', etc.
+            question.chartType = 'bar'; //  'bar', 'doughnut', etc.
           }
         });
         this.stats = processedStats;

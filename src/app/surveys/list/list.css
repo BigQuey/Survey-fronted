@@ -7,34 +7,37 @@
 
 h2 {
   text-align: center;
-  color: #333;
+  color: #222;
   font-weight: 700;
   margin-bottom: 2rem;
 }
 
-
+/* --- Tarjetas --- */
 .card {
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
+  border-radius: 14px;
   border: none;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: linear-gradient(145deg, #ffffff, #f4f7fb);
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
-
+/* --- Contenido --- */
 .card-body {
-  padding: 1.5rem;
-  background: #ffffff;
-  transition: background 0.3s ease;
+  padding: 1.8rem;
+}
+
+.survey-info {
+  flex: 1;
+  min-width: 220px;
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: #2575fc;
   margin-bottom: 0.5rem;
@@ -45,7 +48,51 @@ h2 {
   color: #555;
 }
 
+/* --- Botones modernos --- */
+.btn-modern {
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.4rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
 
+.btn-primary-modern {
+  background: linear-gradient(90deg, #2575fc, #6a11cb);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(37, 117, 252, 0.4);
+}
+
+.btn-primary-modern:hover {
+  background: linear-gradient(90deg, #1b63d8, #5810a8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(37, 117, 252, 0.5);
+}
+
+.btn-secondary-modern {
+  background: transparent;
+  border: 2px solid #6c757d;
+  color: #6c757d;
+}
+
+.btn-secondary-modern:hover {
+  background: #6c757d;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* --- Footer completado --- */
+.completed-footer {
+  background: #28a745;
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+}
+
+/* --- Alerta --- */
 .alert {
   text-align: center;
   padding: 1.5rem;
@@ -55,7 +102,7 @@ h2 {
   font-weight: 500;
 }
 
-
+/* --- Cargando --- */
 .text-center p {
   font-size: 1.1rem;
   color: #555;

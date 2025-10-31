@@ -28,25 +28,31 @@ export class RegisterComponent {
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.fb = this.fb || new FormBuilder();
     this.form = this.fb.group({
-      username: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
 
   onSubmit(): void {
-    if (this.form.invalid) return;
+     console.log('Formulario enviado', this.form.value);
 
-    this.loading = true;
-    this.authService.register(this.form.value).subscribe({
-      next: () => {
-        alert('Registro exitoso. Ahora puedes iniciar sesión.');
-        this.router.navigate(['/login']);
-      },
-      error: (err) => {
-        this.loading = false;
-        alert('Error al registrarse. Inténtalo nuevamente.');
-      },
-    });
+  if (this.form.invalid) {
+    console.warn('Formulario inválido', this.form.errors);
+    return;
+  }
+
+  this.loading = true;
+  this.authService.register(this.form.value).subscribe({
+    next: () => {
+      alert('Registro exitoso. Ahora puedes iniciar sesión.');
+      this.router.navigate(['/login']);
+    },
+    error: (err) => {
+      this.loading = false;
+      console.error('Error al registrar:', err);
+      alert('Error al registrarse. Inténtalo nuevamente.');
+    },
+  });
   }
 }

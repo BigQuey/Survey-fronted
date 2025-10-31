@@ -49,6 +49,8 @@ export class SurveyDetailComponent {
           this.survey = survey.data;
           this.userAnswers = this.processAnswers(answers.data);
           this.loading = false;
+          console.log(survey.data);
+          
         },
         error: (err) => {
           console.error('Error al cargar datos de vista:', err);
@@ -61,6 +63,9 @@ export class SurveyDetailComponent {
         next: (res) => {
           this.survey = res.data;
           this.loading = false;
+          console.log("--------------------------------- \n");
+          console.log(JSON.stringify(res.data, null, 2));
+          
         },
         error: (err) => {
           console.error('Error al cargar encuesta:', err);

@@ -37,10 +37,10 @@ export class ListComponent implements OnInit {
    }
   goToSurvey(survey: any): void {
     if (survey.completedByUser) {
-      // Si está completada, navega al detalle en modo "ver"
+      
       this.router.navigate(['/surveys/detail', survey.id], { queryParams: { mode: 'view' } });
     } else {
-      // Si no, navega al detalle en modo "responder" (normal)
+      
       this.router.navigate(['/surveys/detail', survey.id]);
     }
   }

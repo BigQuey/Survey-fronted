@@ -1,95 +1,127 @@
 .admin-container {
   height: 100vh;
-  font-family: 'Roboto', sans-serif;
+  display: flex;
+  background: #f9fafc;
+  font-family: "Poppins", sans-serif;
 }
+
 
 .admin-sidenav {
   width: 260px;
-  background: #ffffff;
-  border-right: 1px solid #e0e0e0;
+  background: linear-gradient(180deg, #54d99d 0%, #54d99d 100%);
+  color: white;
   display: flex;
   flex-direction: column;
   padding-top: 1rem;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 4px 0 12px rgba(255, 121, 162, 0.3);
 }
 
 .sidenav-header {
-  display: flex;
-  align-items: center;
-  padding: 0 1rem 1rem 1rem;
-  gap: 10px;
-  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .sidenav-header mat-icon {
-  color: #4f46e5;
-  font-size: 30px;
+  font-size: 50px;
+  color: #fff6f9;
 }
 
 .sidenav-header h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  color: #111827;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  color: #ffffff;
 }
 
+
 mat-nav-list a {
-  color: #374151;
-  border-radius: 8px;
-  margin: 5px 10px;
+  color: #fff;
+  font-weight: 500;
+  margin: 0.4rem 0.7rem;
+  padding: 0.6rem;
+  border-radius: 10px;
   transition: all 0.3s ease;
 }
 
 mat-nav-list a:hover {
-  background: #f3f4f6;
+  background-color: rgba(255, 255, 255, 0.25);
   transform: translateX(5px);
 }
 
 .active-link {
-  background: #e0e7ff !important;
-  color: #4f46e5;
+  background: rgba(255, 255, 255, 0.4);
   font-weight: 600;
 }
 
-mat-nav-list mat-icon {
-  margin-right: 12px;
-  color: #4f46e5;
-}
 
 .admin-toolbar {
+  background: linear-gradient(90deg, #54d99d 0%, #54d99d 100%);
+  color: white;
+  padding: 0 24px;
+  height: 64px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  background: #ffffff;
-  padding: 0 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  color: #111827;
-  font-weight: 500;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
 }
 
-.spacer {
-  flex: 1;
+.admin-toolbar .spacer {
+  flex: 1 1 auto;
 }
 
-button[mat-icon-button] mat-icon {
-  color: #4f46e5;
+.admin-toolbar button mat-icon {
+  color: #ffeaf1;
   transition: transform 0.2s ease;
 }
 
-button[mat-icon-button]:hover mat-icon {
-  transform: scale(1.1);
+.admin-toolbar button:hover mat-icon {
+  transform: scale(1.2);
 }
+
 
 .admin-content {
-  background: #f9fafb;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  background: linear-gradient(180deg, #f9fafc 0%, #f0f4ff 100%);
 }
 
+
 .main-content {
-  margin: 1rem;
   padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+
+.dashboard-card {
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-radius: 18px;
+  padding: 1.6rem;
+  margin: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border-top: 6px solid #ff9a8b;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.dashboard-card h4 {
+  color: #222;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.dashboard-card p {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

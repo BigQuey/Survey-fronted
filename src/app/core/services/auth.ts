@@ -7,7 +7,7 @@ import { BehaviorSubject, map, Observable, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/api/users/auth'; // Gateway apuntando al user-service
+  private apiUrl = 'http://localhost:8080/api/users/auth';
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
   private userRoleSubject = new BehaviorSubject<string | null>(null);

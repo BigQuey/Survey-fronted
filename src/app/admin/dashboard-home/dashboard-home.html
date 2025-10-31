@@ -2,50 +2,60 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<div *ngIf="!isLoading">
-  <h1>Resumen General</h1>
-  <div class="row mt-4">
+<div *ngIf="!isLoading" class="dashboard-container p-3">
+
+  <h1 class="dashboard-title text-center mb-4">📊 Resumen General</h1>
+
+  <div class="row g-4"> <!-- g-4 agrega separación entre columnas -->
+
+    <!-- Encuestas Totales -->
     <div class="col-md-4">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <div mat-card-avatar class="card-icon poll">
+      <mat-card class="dashboard-card gradient-green p-3 shadow-sm rounded">
+        <mat-card-header class="mb-2">
+          <div mat-card-avatar class="card-icon">
             <mat-icon>poll</mat-icon>
           </div>
           <mat-card-title>Encuestas Totales</mat-card-title>
           <mat-card-subtitle>Número de encuestas creadas</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p class="stats-number">{{ stats.data.totalSurveys }}</p>
+          <p class="stats-number text-center">{{ stats.data.totalSurveys }}</p>
         </mat-card-content>
       </mat-card>
     </div>
+
+    <!-- Usuarios Registrados -->
     <div class="col-md-4">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <div mat-card-avatar class="card-icon users">
+      <mat-card class="dashboard-card gradient-teal p-3 shadow-sm rounded">
+        <mat-card-header class="mb-2">
+          <div mat-card-avatar class="card-icon">
             <mat-icon>group</mat-icon>
           </div>
           <mat-card-title>Usuarios Registrados</mat-card-title>
           <mat-card-subtitle>Total de usuarios en el sistema</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p class="stats-number">{{ stats.data.totalUsers }}</p>
+          <p class="stats-number text-center">{{ stats.data.totalUsers }}</p>
         </mat-card-content>
       </mat-card>
     </div>
+
+    <!-- Respuestas Enviadas -->
     <div class="col-md-4">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <div mat-card-avatar class="card-icon responses">
+      <mat-card class="dashboard-card gradient-blue p-3 shadow-sm rounded">
+        <mat-card-header class="mb-2">
+          <div mat-card-avatar class="card-icon">
             <mat-icon>question_answer</mat-icon>
           </div>
           <mat-card-title>Respuestas Enviadas</mat-card-title>
           <mat-card-subtitle>Total de respuestas recibidas</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <p class="stats-number">{{ stats.data.totalResponses }}</p>
+          <p class="stats-number text-center">{{ stats.data.totalResponses }}</p>
         </mat-card-content>
       </mat-card>
     </div>
+
   </div>
+
 </div>
